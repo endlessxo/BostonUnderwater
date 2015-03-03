@@ -1,0 +1,126 @@
+{% extends 'bostonunderwater/data.html' %}
+{% block googlemaps %}
+    <style>
+      html, body, #map-canvas {
+        height: 90%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+      #water-box {
+	background-color: black;
+	border: 1px solid black;
+	bottom: 120px;
+	height: 30px;
+	min-width: 190px;
+	padding: 10px;
+	position: absolute;
+	left: 30px;
+        text-align: left;
+      }
+      #long-box {
+	background-color: black;
+	border: 1px solid black;
+	bottom: 155px;
+	height: 30px;
+	min-width: 190px;
+	padding: 10px;
+	position: absolute;
+	left: 30px;
+        text-align: left;
+      }
+      #lat-box {
+	background-color: black;
+	border: 1px solid black;
+	bottom: 190px;
+	height: 30px;
+	min-width: 190px;
+	padding: 10px;
+	position: absolute;
+	left: 30px;
+        text-align: left;
+      }
+      #name-box {
+	background-color: black;
+	border: 1px solid black;
+	bottom: 225px;
+	height: 30px;
+	min-width: 190px;
+	padding: 10px;
+	position: absolute;
+	left: 30px;
+        text-align: left;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
+    <script>
+
+var map, layer;
+
+function initialize() {
+  var mapOptions = {
+    zoom: 14,
+    center: new google.maps.LatLng(42.353692, -71.094525),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  layer = new google.maps.visualization.DynamicMapsEngineLayer();
+  layer.setMap(map);
+  
+  //Grab the geoJSON nodes and their properties
+  var script = document.createElement('script');
+  script.setAttribute('src',
+      'http://104.236.77.88/bostonunderwater/geojson/');
+  document.getElementsByTagName('head')[0].appendChild(script);
+  
+  // Set mouseover event for each feature
+  map.data.addListener('mouseover', function(event) {
+    //Update Water Level Field
+    document.getElementById('water-box').textContent = "Water Level = " +
+        event.feature.getProperty('waterLevel') + " inches";
+    //Update Name Field
+    document.getElementById('name-box').textContent = "Node Number  = " +
+        event.feature.getProperty('nodeNumber');
+    //Update Longitude Field
+    document.getElementById('long-box').textContent = "Longitude = " + event.feature.getProperty('longitude');
+    //Update Latitude Field
+    document.getElementById('lat-box').textContent = "Latitude = " + event.feature.getProperty('latitude');
+  });
+
+  // Highlight current node on mouseover
+  
+  //Set styling for each node
+  map.data.setStyle(function(feature) {
+    var waterlevel = Math.exp(parseFloat(feature.getProperty('waterLevel'))) * 0.9;
+    return /** @type {google.maps.Data.StyleOptions} */({
+      icon: {
+        path: google.maps.SymbolPath.CIRCLE,
+        scale: waterlevel,
+        fillColor: '#0ff',
+        fillOpacity: 0.45,
+        strokeWeight: 0
+      }
+    });
+  }); 
+}
+
+// Defines the callback function referenced in the json file.
+function eqfeed_callback(data) {
+  map.data.addGeoJson(data);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+{% endblock %}
