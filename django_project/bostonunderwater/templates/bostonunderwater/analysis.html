@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/static/bootstrap/favicon.ico">
 
-    <title>Boston Underwater Homepage</title>
+    <title>Boston Underwater Analysis</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -41,59 +41,25 @@
               <h3 class="masthead-brand"></h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li><a href="../">Home</a></li>
+                  <li><a href="..">Home</a></li>
                   <li><a href="../data">Sensor Map</a></li>
-                  <li class="active"><a href="./contact">Contact</a></li>
-                </ul>
+                  <li><a href="../contact">Contact</a></li>
+                  <li class="active"><a href=".">Analysis</a></li>
+		</ul>
               </nav>
             </div>
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Contact Info</h1>
-            <p class="lead">The Squirtle Squad</p>
-            <p class="lead">
-            </p>
+		<p>This is the inner cover</p>
           </div>
 
-	  <div class="col-sm-4">
-	    <img src="http://i.imgur.com/0XoWNaJ.jpg" class="img-rounded">
-	    <h2>Niklas Kunkel</h2>
-	    <p style="color: rgb(255, 255, 255); font-size: 15px;">
-	      Nik grew up with aspirations of being left shark.
-	    </p>
 
-	  <form method='POST' action=''> {% csrf_token %}
-	    {{ form.as_p }}
-	    <input type='submit' class='btn btn-success' value="Contact">
-	  </form>
-	  </div>
-	  
-	  <div class="col-sm-4">
-	    <img src="http://i.imgur.com/hv5zqc4.png" class="img-rounded">
-	    <h2>King Mui</h2>
-	    <p style="color: rgb(255, 255, 255); font-size: 15px;">
-	      Guys if we win this, everyone gets a girlfriend.
-	    </p>	  
-	<a href ="mailto:kingfmui@bu.edu" class="btn btn-info" role="button">Contact</a>
-	
-	</div>
-
-	  <div class="col-sm-4">
-	    <img src="http://i.imgur.com/reGUnol.jpg" class="img-rounded">
-	    <h2>Raymond Li</h2>
-	    <p style="color: rgb(255, 255, 255); font-size: 15px;">
-	      Boss man, doing them lifts, getting them gains.
-	    </p>
-            <form method='POST' action=''> {% csrf_token %}
-              {{ form.as_p }}
-              <input type='submit' class='btn btn-success' value="Contact">
-            </form>
-	  </div>
+	<script src="/static/boostrap/test.js"></script>
 
           <div class="mastfoot">
             <div class="inner">
-	      <p>Website created by King Mui and Niklas Kunkel running on Django and Bootstrap</p>
+              <p>Website created by King Mui and Niklas Kunkel running on Django and Bootstrap</p>
             </div>
           </div>
 

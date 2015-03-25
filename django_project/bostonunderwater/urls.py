@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     url(r'^home/', views.home, name = 'home'),
     url(r'^data/', views.data, name = 'data'),
     url(r'^contact/', views.contact, name= 'contact'),
-    url(r'^geojson/', views.geojson, name= 'geojson')
-   
+    url(r'^geojson/', views.geojson, name= 'geojson'),
+    
+    url(r'^analysis/', views.analysis, name='analysis'),   
 )

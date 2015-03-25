@@ -27,3 +27,7 @@ def contact(request):
 
 def geojson(request):
     return render(request, 'bostonunderwater/geojson.html')
+
+
+def analysis(request):
+    return render(request, 'bostonunderwater/analysis.html')
