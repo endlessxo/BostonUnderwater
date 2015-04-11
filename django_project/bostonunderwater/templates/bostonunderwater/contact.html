@@ -43,7 +43,8 @@
                 <ul class="nav masthead-nav">
                   <li><a href="../">Home</a></li>
                   <li><a href="../data">Sensor Map</a></li>
-                  <li class="active"><a href="./contact">Contact</a></li>
+                  <li><a href="../analytics">Analytics</a></li>
+		  <li class="active"><a href="./contact">Contact</a></li>
                 </ul>
               </nav>
             </div>
@@ -62,11 +63,7 @@
 	    <p style="color: rgb(255, 255, 255); font-size: 15px;">
 	      Nik grew up with aspirations of being left shark.
 	    </p>
-
-	  <form method='POST' action=''> {% csrf_token %}
-	    {{ form.as_p }}
-	    <input type='submit' class='btn btn-success' value="Contact">
-	  </form>
+	    <a href="mailto:Niklas@theKunkels.com" class="btn btn-info" role="button">Contact</a>
 	  </div>
 	  
 	  <div class="col-sm-4">
@@ -85,10 +82,7 @@
 	    <p style="color: rgb(255, 255, 255); font-size: 15px;">
 	      Boss man, doing them lifts, getting them gains.
 	    </p>
-            <form method='POST' action=''> {% csrf_token %}
-              {{ form.as_p }}
-              <input type='submit' class='btn btn-success' value="Contact">
-            </form>
+            <a href="mailto:Li.Raymond9@gmail.com" class="btn btn-info" role="button">Contact</a>
 	  </div>
 
           <div class="mastfoot">

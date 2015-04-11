@@ -1,0 +1,1 @@
+var chartData1  = [{time: "2015-02-21 00:00:00-05:00", water_level: 4},{time: "2015-02-28 00:00:00-05:00", water_level: 2},{time: "2015-02-14 00:00:00-05:00", water_level: 6},{time: "2015-03-07 00:00:00-05:00", water_level: 5},{time: "2015-02-07 00:00:00-05:00", water_level: 4},];

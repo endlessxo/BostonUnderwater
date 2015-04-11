@@ -50,9 +50,9 @@
           </div>
 
           <div class="inner cover">
-	    <img src="http://i.imgur.com/bXvvN3t.png" align="middle" alt="Osama Bin Floodin">
+	    <img src="http://i.imgur.com/bXvvN3t.png" align="middle" class="img-rounded" alt="Osama Bin Floodin">
             <h1 class="cover-heading">Welcome to the Boston Underwater Project</h1>
-            <p class="lead">Boston Underwater seeks to create cheap disposable water sensors to record water levels remotely. Our hope is that this data can be used to better communities by providing real time feedback about floods.</p>
+            <p class="lead">Boston Underwater seeks to create cheap disposable self-powered water sensors to record water levels remotely. Our hope is that this data can be used to better communities by providing real time feedback about floods.</p>
             <p class="lead">
               <a href="./data" class="btn btn-lg btn-default">Check out our real-time data!</a>
             </p>

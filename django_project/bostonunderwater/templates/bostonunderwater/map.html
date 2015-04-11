@@ -65,6 +65,7 @@
     <script>
 
 var map, layer;
+var infowindow = new google.maps.InfoWindow();
 
 function initialize() {
   var mapOptions = {
@@ -84,7 +85,16 @@ function initialize() {
   script.setAttribute('src',
       'http://104.236.77.88/bostonunderwater/geojson/');
   document.getElementsByTagName('head')[0].appendChild(script);
-  
+
+  map.data.addListener('click', function(event) {
+    var myHTML = event.feature.getProperty('nodeNumber');
+    //infowindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
+    infowindow.setContent("<a href='http://www.bostonunderwater.me/bostonunderwater/analytics/' class='btn btn-info' role='button'>View Graph</a>");
+    infowindow.setPosition(event.feature.getGeometry().get());
+    infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
+    infowindow.open(map);
+  });
+
   // Set mouseover event for each feature
   map.data.addListener('mouseover', function(event) {
     //Update Water Level Field
@@ -99,11 +109,14 @@ function initialize() {
     document.getElementById('lat-box').textContent = "Latitude = " + event.feature.getProperty('latitude');
   });
 
+
+
   // Highlight current node on mouseover
   
   //Set styling for each node
   map.data.setStyle(function(feature) {
-    var waterlevel = Math.exp(parseFloat(feature.getProperty('waterLevel'))) * 0.9;
+    var waterlevel;
+    waterlevel = Math.exp(parseFloat(feature.getProperty('waterLevel'))) * 0.9;
     return /** @type {google.maps.Data.StyleOptions} */({
       icon: {
         path: google.maps.SymbolPath.CIRCLE,

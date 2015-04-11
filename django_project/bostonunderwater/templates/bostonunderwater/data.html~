@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/static/bootstrap/favicon.ico">
+
+    <title>Sensor Node Map</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/bootstrap/cover.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/bootstrap/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    {% block googlemaps %}{% endblock %}
+
+  </head>
+
+  <body>
+    <div class="inner">
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li><a href="..">Home</a></li>
+                  <li class="active"><a href=".">Sensor Map</a></li>
+                  <li><a href="../contact">Contact</a></li>
+                </ul>
+              </nav>   
+              <h4>Real-Time Flooding Data!</h4>
+    </div>
+
+    <div class="mastfoot">
+      <div class="inner">
+        <p>Website created by King Mui and Niklas Kunkel running on Django and Bootstrap</p>
+      </div>
+    </div>
+    
+    <div id="map-canvas"></div>
+    <div id="name-box">Node Number = </div>
+    <div id="lat-box">Latitude = </div>
+    <div id="long-box">Longitude = </div>
+    <div id="water-box"><div style="overflow:hidden;line-height:1.35;min-width:150px;"></div>Water Level = </div>
+    
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/static/bootstrap/bootstrap.min.js"></script>
+    <script src="/static/bootstrap/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/bootstrap/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
+

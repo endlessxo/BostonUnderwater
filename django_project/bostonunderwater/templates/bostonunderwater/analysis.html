@@ -26,6 +26,63 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      //Load the Visualization API
+      google.load('visualization', '1.0', {'packages':[ 'corechart','bar']});
+      
+      //Set a callback to run when the Google Visualization API is loaded
+      google.setOnLoadCallback(drawChart);
+
+      //Callback that creates and populates a data table,
+      //instantiates the char, passes in the data, and draws it
+      function drawChart() {
+
+        //Create the data table
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Time');
+        data.addColumn('number', 'Water Level');
+
+        data.addRows([
+          ['00:00',3],
+          ['01:00',1],
+          ['02:00',1],
+          ['03:00',1],
+          ['04:00',2],
+          ['05:00',1],
+          ['06:00',0],
+          ['07:00',3],
+          ['08:00',1],
+          ['09:00',4],
+          ['10:00',2],
+          ['11:00',1],
+          ['12:00',3],
+          ['13:00',2],
+          ['14:00',1],
+          ['15:00',3],
+          ['16:00',1]
+        ]);
+
+        //Set Chart Options
+        var options = {title:'Node Water Level History',
+                       width:800,
+                       height:400,
+                       hAxis: {
+                         title: 'Water Level (in inches)'
+                       },
+                       vAxis: {
+                         title: 'Time'
+                       }
+        };
+
+        //Instantiate and draw our chart, passing in some options
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
   </head>
 
   <body>
@@ -33,9 +90,8 @@
     <div class="site-wrapper">
 
       <div class="site-wrapper-inner">
-
         <div class="cover-container">
-
+	  
           <div class="masthead clearfix">
             <div class="inner">
               <h3 class="masthead-brand"></h3>
@@ -51,8 +107,9 @@
           </div>
 
           <div class="inner cover">
-		<p>This is the inner cover</p>
+		<h4>Graph Analysis</h4>
           </div>
+	  <div id="chart_div" align="left"></div>
 
 
 	<script src="/static/boostrap/test.js"></script>
