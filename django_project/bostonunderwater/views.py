@@ -39,10 +39,10 @@ def analysis(request):
 
 def analytics(request):
     array = []
-    Tickerform = TickerForm(request.POST)
-    path = /home/django/django_project/bostonunderwater/templates/bostonunderwater/nodeData.html
+    #Tickerform = TickerForm(request.POST)
+    path = '/home/django/django_project/bostonunderwater/templates/bostonunderwater/nodedata.html'
     with open(path,'r') as ins:
         for line in ins:
             array.append(line)
-    #return render(request, 'bostonunderwater/analytics.html')
-    return HttpResponse(json.dumps(array),content_type="application/json")
+    return render(request, 'bostonunderwater/analytics.html')
+    #return HttpResponse(json.dumps(array),content_type="application/json")

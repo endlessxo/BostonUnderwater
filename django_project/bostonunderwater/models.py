@@ -17,7 +17,7 @@ class Node(models.Model):
     #http://david.feinzeig.com/blog/2011/12/06/how-to-properly-set-a-default-value-for-a-datetimefield-in-django/
     time = models.DateTimeField('date created', default=datetime.now)
     water_level = models.IntegerField(max_length=1, null=True, blank=True)
-    node_number = models.IntegerField(max_length=9, null=True, blank=True)
+    node_number = models.IntegerField(max_length=40, null=True, blank=True)
     def __unicode__(self):
         return smart_unicode(self.node_number)
 
@@ -30,3 +30,14 @@ class Contact(models.Model):
 
     def __unicode__(self):
         return smart_unicode(self.email)
+
+class Beacon(models.Model):
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    time = models.DateTimeField('date created', default=datetime.now)
+    water_level = models.IntegerField(max_length=1, null=True, blank=True)
+    node_number = models.CharField(max_length=40, null=True, blank=True)
+    def __unicode__(self):
+        return smart_unicode(self.node_number)
+
+

@@ -61,6 +61,280 @@
         text-align: left;
       }
     </style>
+
+    <link href="/static/featherlight/src/featherlight.css" type="text/css" rel="stylesheet" title="Featherlight Styles" />
+    <script src="//code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/featherlight/src/featherlight.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="/static/amcharts/style.css" type="text/css">
+    <script src="/static/amcharts/amcharts.js" type="text/css"></script>
+    <script src="/static/amcharts/serial.js" type="text/css"></script>
+    <script src="/static/amcharts/amstock.js" type="text/css"></script>
+    <script src="/static/nodeData/node0.json" type="text/css"></script>
+    <script src="/static/nodeData/node1.json" type="text/css"></script>
+    <script src="/static/nodeData/node2.json" type="text/css"></script>
+    <script src="/static/nodeData/node3.json" type="text/css"></script>
+    <script src="/static/nodeData/node4.json" type="text/css"></script>
+    <script src="/static/nodeData/node5.json" type="text/css"></script>
+       
+    <div id="graphbox">
+      <script type="text/javascript">
+
+        var chartStock1 = [];
+        var chartStock2 = [];
+        var chartStock3 = [];
+        var chartStock4 = [];
+
+        generateChartData();
+
+        function generateChartData() {
+        var firstDate = new Date();
+        firstDate.setDate(firstDate.getDate() - 500);
+        firstDate.setHours(0, 0, 0, 0);
+	
+        for (var i = 0; i < 500; i++) {
+                            var newDate = new Date(firstDate);
+                            newDate.setDate(newDate.getDate() + i);
+
+                            var a1 = Math.round(Math.random() * (40 + i)) + 100 + i;
+                            var b1 = Math.round(Math.random() * (1000 + i)) + 500 + i * 2;
+
+                            var a2 = Math.round(Math.random() * (100 + i)) + 200 + i;
+                            var b2 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+
+                            var a3 = Math.round(Math.random() * (100 + i)) + 200;
+                            var b3 = Math.round(Math.random() * (1000 + i)) + 600 + i * 2;
+
+                            var a4 = Math.round(Math.random() * (100 + i)) + 200 + i;
+                            var b4 = Math.round(Math.random() * (100 + i)) + 600 + i;
+
+                            chartStock1.push({
+                            date: newDate,
+                            value: a1,
+                            volume: b1
+                            });
+                            chartStock2.push({
+                            date: newDate,
+                            value: a2,
+                            volume: b2
+                            });
+			    chartStock3.push({
+                            date: newDate,
+                            value: a3,
+                            volume: b3
+			    });
+                            chartStock4.push({
+                            date: newDate,
+                            value: a4,
+                            volume: b4
+                            });
+			    }
+                            }
+
+			    AmCharts.makeChart("chartdiv", {
+                            type: "stock",
+                            pathToImages: "/static/amcharts/images/",
+			    dataSets: [
+                            {
+                            title: "TEST1",
+                            fieldMappings: [{
+                            fromField: "value",
+                            toField: "value"
+                            }, {
+                            fromField: "volume",
+                            toField: "volume"
+                            }],
+			    dataProvider: chartStock1,
+                            categoryField: "date"
+                            },
+			    
+                            {
+			    title: "TEST2",
+                            fieldMappings: [{
+                            fromField: "value",
+                            toField: "value"
+                            }, {
+                            fromField: "volume",
+                            toField: "volume"
+			    }],
+                            dataProvider: chartStock2,
+                            categoryField: "date"
+                            },
+			    {
+			    title: "TEST3",
+                            fieldMappings: [{
+                            fromField: "value",
+                            toField: "value"
+                            }, {
+                            fromField: "volume",
+                            toField: "volume"
+                            }],
+                            dataProvider: chartStock3,
+                            categoryField: "date"
+                            },
+			    
+                            {
+                            title: "Node 0",
+                            fieldMappings: [{
+                            fromField: "water_value",
+                            toField: "value"
+                            }, {
+                            fromField: "water_value",
+                            toField: "volume"
+                            }],
+                            dataProvider: chartData0,
+                            categoryField: "time"
+                            },
+			    
+                            {
+                            title: "Node 1",
+                            fieldMappings: [{
+                            fromField: "water_value",
+                            toField: "value"
+                            }, {
+                            fromField: "water_value",
+                            toField: "volume"
+                            }],
+                            dataProvider: chartData1,
+                            categoryField: "time"
+                            },
+
+			    {
+                            title: "Node 2",
+                            fieldMappings: [{
+                            fromField: "water_value",
+			    toField: "value"
+                            }, {
+                            fromField: "water_value",
+                            toField: "volume"
+                            }],
+                            dataProvider: chartData2,
+			    categoryField: "time"
+                            },
+			    
+                            {
+                            title: "Node 3",
+                            fieldMappings: [{
+                            fromField: "water_level",
+                            toField: "value"
+                            }, {
+                            fromField: "water_level",
+                            toField: "volume"
+                            }],
+                            dataProvider: chartData3,
+			    categoryField: "time"
+			    },
+			    {
+                            title: "Node 4",
+                            fieldMappings: [{
+			    fromField: "water_level",
+                            toField: "value"
+                            }, {
+			    fromField: "water_level",
+                            toField: "volume"
+			    }],
+			    dataProvider: chartData4,
+                            categoryField: "time"
+                            },
+                            {
+                            title: "Node 5",
+			    fieldMappings: [{
+                            fromField: "water_level",
+                            toField: "value"
+			    }, {
+                            fromField: "water_level",
+                            toField: "volume"
+                            }],
+                            dataProvider: chartData5,
+                            categoryField: "time"
+			    }],
+			    
+			    panels: [{
+			    
+                            showCategoryAxis: false,
+                            title: "Water Level (in cm)",
+                            percentHeight: 70,
+			    
+                            stockGraphs: [{
+                            id: "g1",
+			    
+                            valueField: "value",
+                            comparable: true,
+                            compareField: "value",
+                            bullet: "round",
+                            bulletBorderColor: "#FFFFFF",
+                            bulletBorderAlpha: 1,
+                            balloonText: "[[title]]:<b>[[value]]</b>",
+			    compareGraphBalloonText: "[[title]]:<b>[[value]]</b>",
+                            compareGraphBullet: "round",
+                            compareGraphBulletBorderColor: "#FFFFFF",
+                            compareGraphBulletBorderAlpha: 1
+                            }],
+			    
+                            stockLegend: {
+                            periodValueTextComparing: "[[value.close]]",
+                            periodValueTextRegular: "[[value.close]]"
+                            }
+			    },
+			    
+			    {
+                            title: "Volume",
+			    percentHeight: 30,
+			    stockGraphs: [{
+                            valueField: "volume",
+                            type: "column",
+			    showBalloon: false,
+                            fillAlphas: 1
+			    }],
+			    
+			    
+                            stockLegend: {
+                            periodValueTextRegular: "[[value.close]]"
+                            }
+                            }],
+			    
+                            chartScrollbarSettings: {
+                            graph: "g1"
+                            },
+			    
+			    chartCursorSettings: {
+			    valueBalloonsEnabled: true,
+                            valueLineEnabled:true,
+                            valueLineBalloonEnabled:true
+			    },
+			    
+			    periodSelector: {
+			    position: "left",
+                            periods: [{
+			    period: "DD",
+                            count: 10,
+			    label: "10 days"
+                            }, {
+                            period: "MM",
+                            selected: true,
+                            count: 1,
+                            label: "1 month"
+			    }, {
+			    period: "YYYY",
+                            count: 1,
+                            label: "1 year"
+                            }, {
+                            period: "YTD",
+                            label: "YTD"
+			    }, {
+                            period: "MAX",
+                            label: "MAX"
+			    }]
+			    },
+			    
+                            dataSetSelector: {
+			    position: "left"
+			    }
+			    });
+		</script>
+      <div id="chartdiv"></div>
+</div>
+
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
     <script>
 
@@ -89,7 +363,7 @@ function initialize() {
   map.data.addListener('click', function(event) {
     var myHTML = event.feature.getProperty('nodeNumber');
     //infowindow.setContent("<div style='width:150px; text-align: center;'>"+myHTML+"</div>");
-    infowindow.setContent("<a href='http://www.bostonunderwater.me/bostonunderwater/analysis/' class='btn btn-info' role='button'>View Graph</a>");
+    infowindow.setContent("<a href='http://www.bostonunderwater.me/bostonunderwater/analytics/' class='btn btn-info' data-featherlight='#graphbox'>View Graph</a>");
     infowindow.setPosition(event.feature.getGeometry().get());
     infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)});
     infowindow.open(map);
